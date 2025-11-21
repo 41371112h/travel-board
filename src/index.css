@@ -1,0 +1,255 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #f5f7fb;
+  --card-bg: #ffffff;
+  --primary: #00a3b4;
+  --primary-soft: #e0f7fa;
+  --text-main: #1f2933;
+  --text-sub: #6b7280;
+  --border-soft: #e5e7eb;
+  --shadow-soft: 0 10px 25px rgba(15, 23, 42, 0.08);
+  --radius-lg: 16px;
+  --radius-md: 10px;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background: var(--bg);
+  color: var(--text-main);
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 頁首：旅遊感 Banner */
+.hero {
+  position: relative;
+  padding: 48px 16px 64px;
+  background: linear-gradient(
+    135deg,
+    #00a3b4,
+    #00c9a7,
+    #4facfe
+  );
+  color: white;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0.12;
+  background-image: radial-gradient(circle at 10% 20%, white 0, transparent 60%),
+    radial-gradient(circle at 80% 0, white 0, transparent 55%);
+}
+
+.hero-content {
+  position: relative;
+  max-width: 840px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-size: 2.4rem;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.4rem;
+}
+
+.hero p {
+  font-size: 1rem;
+  opacity: 0.92;
+}
+
+/* 主體區塊 */
+.main {
+  max-width: 960px;
+  width: 100%;
+  margin: 24px auto 40px;
+  padding: 0 16px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .main {
+    grid-template-columns: 1fr;
+    margin-top: -32px;
+  }
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  padding: 20px 5px 22px;
+}
+
+.card h2 {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+}
+
+.card-form h2::before,
+.card-list h2::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 18px;
+  border-radius: 999px;
+  background: var(--primary);
+  margin-right: 8px;
+  vertical-align: -3px;
+}
+
+/* 表單 */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form-row {
+  display: flex;
+  gap: 12px;
+}
+
+@media (max-width: 600px) {
+  .form-row {
+    flex-direction: column;
+  }
+}
+
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+label {
+  font-size: 0.85rem;
+  color: var(--text-sub);
+}
+
+input,
+textarea {
+  padding: 8px 10px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-soft);
+  font-size: 0.95rem;
+  outline: none;
+  background: #f9fafb;
+  transition: border 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 1px rgba(0, 163, 180, 0.12);
+  background: #ffffff;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.btn-primary {
+  margin-top: 4px;
+  align-self: flex-start;
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: none;
+  background: var(--primary);
+  color: white;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease,
+    background 0.12s ease;
+  box-shadow: 0 8px 18px rgba(0, 163, 180, 0.35);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(0, 163, 180, 0.45);
+  background: #0091a1;
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 5px 12px rgba(0, 163, 180, 0.3);
+}
+
+/* 留言列表 */
+.empty-text {
+  font-size: 0.9rem;
+  color: var(--text-sub);
+  padding: 8px 0;
+}
+
+.comment-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.comment-item {
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  background: #f9fafb;
+  border: 1px solid #edf0f4;
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 4px;
+  gap: 6px;
+}
+
+.comment-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.comment-destination {
+  font-size: 0.8rem;
+  background: var(--primary-soft);
+  color: #026d78;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.comment-message {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 4px 0 6px;
+}
+
+.comment-footer {
+  font-size: 0.75rem;
+  color: var(--text-sub);
+}
+
+/* 頁尾 */
+.footer {
+  margin-top: auto;
+  padding: 14px 16px 18px;
+  font-size: 0.8rem;
+  text-align: center;
+  color: var(--text-sub);
+}
